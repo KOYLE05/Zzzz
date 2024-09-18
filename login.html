@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1>My E-Commerce Website</h1>
+        <nav>
+            <button id="login-btn" class="login-button">Login</button>
+        </nav>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" id="login-submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        // Get modal element
+const modal = document.getElementById('login-modal');
+// Get open modal button
+const loginBtn = document.getElementById('login-btn');
+// Get close button
+const closeBtn = document.getElementsByClassName('close')[0];
+
+// Listen for click on Login button
+loginBtn.addEventListener('click', openModal);
+// Listen for close click
+closeBtn.addEventListener('click', closeModal);
+// Close modal if user clicks outside of modal content
+window.addEventListener('click', outsideClick);
+
+// Function to open modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Function to close modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Function to close modal if clicked outside
+function outsideClick(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Simulated login function (can be replaced with real authentication logic)
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form from submitting
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'user' && password === 'password') {
+        alert('Login Successful');
+        closeModal();
+    } else {
+        alert('Invalid credentials');
+    }
+});
+
+    </script>
+</body>
+</html>

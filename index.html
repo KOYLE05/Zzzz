@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-Commerce Website</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 20px;
+}
+
+#filter-search {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#search-bar {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#filters select, #apply-filters {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+#apply-filters {
+    background-color: #242ca3;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#apply-filters:hover {
+    background-color: #29328f;
+}
+
+#product-list {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.product p {
+    font-size: 1rem;
+}
+
+
+header {
+    background-color: #07225faf;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+#products, #cart {
+    margin: 20px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.product img {
+    max-width: 400px;
+}
+
+button {
+    background-color: #4955c2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3762b7;
+}
+
+#cart-items {
+    list-style: none;
+    padding: 0;
+}
+nav {
+    margin-top: 10px;
+}
+
+nav button {
+    background-color: #2487a5cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #217788;
+}
+
+#checkout {
+    max-width: 80px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#order-summary {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#order-summary h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#total {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-button {
+    background-color: #ffc107; /* Yellow login button */
+}
+
+.login-button:hover {
+    background-color: #e0a800;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My E-Commerce Store</h1>
+        <nav>
+            <a href="#">Home</a>
+            <button onclick="location.href='product.html'">Products</button>
+            <button onclick="location.href='mycart.html'">My Cart (<span id="cart-count">0</span>)</button>
+            <button onclick="location.href='login.html'">🌐 Login</a>
+        </nav>
+        
+    </header>
+
+    <section id="filter-search">
+        <h2>Search & Filter Products</h2>
+
+        <!-- Search Bar -->
+        <input type="text" id="search-bar" placeholder="Search for a product...">
+        
+        <!-- Filters -->
+        <div id="filters">
+            <label for="category-filter">Category:</label>
+            <select id="category-filter">
+                <option value="all">All</option>
+                <option value="Indian">Indian</option>
+                <option value="chiense">chiense</option>
+                <option value="continental">continental</option>
+            </select>
+
+            <label for="price-filter">Price Range:</label>
+            <select id="price-filter">
+                <option value="all">All</option>
+                <option value="0-10">below ₹100</option>
+                <option value="10-50">₹100 - ₹250</option>
+                <option value="50-100">above ₹250</option>
+            </select>
+
+            <button id="apply-filters">Apply Filters</button>
+        </div>
+    </section>
+
+    <section id="product-list">
+        <h2>Product List</h2>
+        <div class="products">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+    </section>
+
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Price: ₹10</p>
+                <button class="add-to-cart" data-name="Product 1" data-price="10">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Price: ₹15</p>
+                <button class="add-to-cart" data-name="Product 2" data-price="15">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Price: ₹20</p>
+                <button class="add-to-cart" data-name="Product 3" data-price="20">Add to Cart</button>
+            </div>
+        </div>
+        
+    </section>
+
+    
+
+    <script>
+
+
+        let cart = [];
+const cartCountElement = document.getElementById('cart-count');
+const cartItemsElement = document.getElementById('cart-items');
+const totalPriceElement = document.getElementById('total-price');
+
+// Function to add product to cart
+function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCart();
+}
+
+// Function to update cart display
+function updateCart() {
+    cartCountElement.textContent = cart.length;
+
+    // Clear previous cart items
+    cartItemsElement.innerHTML = '';
+
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - $${item.price}`;
+        cartItemsElement.appendChild(listItem);
+
+        totalPrice += parseFloat(item.price);
+    });
+
+    if (cart.length === 0) {
+        cartItemsElement.innerHTML = '<li>Your cart is empty</li>';
+    }
+
+    totalPriceElement.textContent = totalPrice.toFixed(2);
+}
+
+// Event listeners for "Add to Cart" buttons
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const name = event.target.dataset.name;
+        const price = event.target.dataset.price;
+        addToCart(name, price);
+    });
+});
+
+function displayCartSummary() {
+        const cartItemsSummary = document.getElementById('cart-items-summary');
+        const totalPriceElement = document.getElementById('total-price');
+
+        let total = 0;
+        cartItemsSummary.innerHTML = '';
+
+        cart.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('cart-item-summary');
+            itemDiv.innerHTML = `
+                <p>${item.name} - $${item.price} x ${item.quantity}</p>
+            `;
+            cartItemsSummary.appendChild(itemDiv);
+            total += item.price * item.quantity;
+        });
+
+        totalPriceElement.textContent = total.toFixed(2);
+    }
+
+    displayCartSummary();
+
+    // Handle form submission (replace with actual submission logic)
+    document.getElementById('checkout-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('Order placed successfully!');
+        // Here, you can add code to handle the form submission, e.g., sending data to the server
+    });
+
+
+    </script>
+</body>
+</html>
